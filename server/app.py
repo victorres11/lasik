@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify, render_template
 
 from ocr import process_image
 
-app = Flask(__name__, static_folder="../client/static", template_folder="../client/templates")
+app = Flask(__name__, static_folder="../dist", template_folder="../app/templates")
 _VERSION = 1 # API Version
 
 @app.route('/v{}/ocr'.format(_VERSION), methods=["POST"])

@@ -43,7 +43,7 @@ var DropzoneDemo = React.createClass({
     },
 
     render: function () {
-      let img_preview_url = this.state.file ? this.state.file[0].preview : 'bar';
+      let img_preview_url = this.state.file ? this.state.file[0].preview : null;
 
       return (
           <div>

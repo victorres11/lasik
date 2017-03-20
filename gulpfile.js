@@ -15,8 +15,20 @@ gulp.task('build', function () {
         .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('watch', ['build'], function () {
+gulp.task('watch:jsx', ['build'], function () {
     gulp.watch('./app/**/*.jsx', ['build']);
+
 });
 
-gulp.task('default', ['build', 'watch']);
+gulp.task('watch:scss', ['styles'], function () {
+    gulp.watch('./app/**/*.scss', ['styles']);
+});
+
+
+gulp.task('styles', function(){
+  return gulp.src('app/styles/main.scss')
+    .pipe(sass()) // Converts Sass to CSS with gulp-sass
+    .pipe(gulp.dest('dist/'))
+});
+
+gulp.task('default', ['build', 'watch:scss', 'watch:jsx', 'styles']);

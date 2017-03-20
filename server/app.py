@@ -3,7 +3,7 @@ import logging
 from logging import FileHandler, Formatter
 from flask import Flask, request, jsonify, render_template
 
-from ocr import process_image
+from ocr import process_image, store_image
 
 app = Flask(__name__, static_folder="../dist", template_folder="../app/templates")
 _VERSION = 1 # API Version
@@ -21,6 +21,12 @@ def ocr():
         return jsonify(
             {"error": "Did you mean to send: {'image_url': 'some_jpeg_url'}"}
         )
+
+@app.route('/v{}/store_to_s3'.format(_VERSION), methods=["POST"])
+def store_to_s3():
+    store_image(request.files['file'])
+    return jsonify({"success": True})
+
 
 @app.route('/')
 def index():

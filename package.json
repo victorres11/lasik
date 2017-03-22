@@ -36,6 +36,8 @@
     "babelify": "^7.3.0",
     "browserify": "^14.1.0",
     "react": "^15.4.2",
+    "react-bootstrap": "^0.30.8",
+    "react-dom": "^15.4.2",
     "react-dropzone": "^3.12.1",
     "superagent": "^3.5.0"
   }

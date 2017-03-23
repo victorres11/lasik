@@ -14,3 +14,13 @@ div.dropzone {
 .OCR-processing-button {
   margin: 20px;
 }
+
+.fa-check-circle{
+  color: green;
+}
+
+.dropzone-contents {
+  // TODO: Improve the padding-top this to make it more reactive!
+  padding-top: 50px;
+  margin: 10px;
+}

@@ -24,8 +24,8 @@ def ocr():
 
 @app.route('/v{}/store_to_s3'.format(_VERSION), methods=["POST"])
 def store_to_s3():
-    store_image(request.files['file'])
-    return jsonify({"success": True})
+    result = store_image(request.files['file'])
+    return jsonify({"image_url": result})
 
 
 @app.route('/')

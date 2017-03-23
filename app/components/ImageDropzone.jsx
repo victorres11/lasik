@@ -1,12 +1,11 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
-import { Button } from 'react-bootstrap';
+import { Button, Alert } from 'react-bootstrap';
 
 
 const API_VERSION  = '/v1',
       STORE_IMAGE_ROUTE = '/store_to_s3';
-
 
 var DropzoneDemo = React.createClass({
 
@@ -15,6 +14,14 @@ var DropzoneDemo = React.createClass({
       file: null,
       fileUrl: null
     }
+  },
+
+  onButtonClick: function() {
+    console.log('button click');
+    // process file -> OCR
+    let upload = request.post(API_VERSION + STORE_IMAGE_ROUTE)
+                        .field('file', this.state.file[0].preview)
+
   },
 
   handleImageUpload: function(file) {
@@ -52,21 +59,30 @@ var DropzoneDemo = React.createClass({
 
     render: function () {
       let img_preview_url = this.state.file ? this.state.file[0].preview : null;
+      const alertInstance = (
+              <Alert
+                bsStyle="success">
+                File has been uploaded successfully!
+              </Alert>
+            );
 
       return (
+
           <div>
+            {this.state.file ? alertInstance : null}
             <Dropzone
               className='dropzone'
               onDrop={this.onDrop}
               // disableClick={true}
               multiple={false}
               >
-              <div>{this.state.file ? null : "Try dropping some files here, or click to select files to upload."}</div>
-              <div>{this.state.file ? <img id='img-preview' src={img_preview_url} /> : false}</div>
+              {this.state.file ? <i className="fa fa-check-circle fa-5x dropzone-contents" aria-hidden="true"> </i> : <p className="dropzone-contents"> Try dropping some files here, or click to select files to upload. </p>}
+              {/* <div>{this.state.file ? <img id='img-preview' src={img_preview_url} /> : false}</div> */}
             </Dropzone>
-            <Button bsStyle="primary"
+
+            {/* <Button bsStyle="primary"
                     className='OCR-processing-button'
-                    onClick={this.onButtonClick}>OCR Processing</Button>
+                    onClick={this.onButtonClick}>OCR Processing</Button> */}
 
           </div>
       );

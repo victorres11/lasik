@@ -1,13 +1,9 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
-import { Alert, Button } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 
 var ImageDropzone = React.createClass({
-
-  onButtonClick: function() {
-    console.log('button click');
-  },
 
   handleImageUpload: function(file) {
     /** POST the uploaded file using backend API which will end up storing
@@ -15,8 +11,6 @@ var ImageDropzone = React.createClass({
     **/
     let upload = request.post(this.props.apiVersion + this.props.storeImageRoute)
                         .field('file', file)
-
-    this.props.onDrop(file);
 
     upload.end((err, response) => {
       if (err) {
@@ -26,6 +20,7 @@ var ImageDropzone = React.createClass({
       }
     })
 
+    this.props.onDrop(file);
   },
 
     render: function () {
@@ -49,12 +44,7 @@ var ImageDropzone = React.createClass({
               {/* <div>{this.state.file ? <img id='img-preview' src={imgPreviewUrl} /> : false}</div> */}
             </Dropzone>
 
-            <Button
-              bsStyle="primary"
-              className='OCR-processing-button'
-              onClick={this.onButtonClick}
-              >OCR Processing
-            </Button>
+
 
           </div>
       );

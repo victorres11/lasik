@@ -12,7 +12,11 @@ S3_STORAGE_PREFIX = "https://s3.us-east-2.amazonaws.com/lasik-victor/"
 
 def process_image(data):
     # image = _get_image(url)
-    Image.open(StringIO(data))
+    # import ipdb; ipdb.set_trace();
+    image = Image.open(StringIO(data))
+    if image.mode=='RGBA':
+        print "converting RGBA to RGB"
+        image = image.convert('RGB')
     image.filter(ImageFilter.SHARPEN)
     return pytesseract.image_to_string(image)
 

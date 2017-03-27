@@ -6,7 +6,7 @@ import OCRContainer from './OCRContainer';
 
 const API_VERSION  = '/v1',
       STORE_IMAGE_ROUTE = '/store_to_s3',
-      PROCESS_IMAGE_ROUTE = '/ocr';
+      PROCESS_IMAGE_ROUTE = '/stringify_image';
 
 var LasikContainer = React.createClass({
 

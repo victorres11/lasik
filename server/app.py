@@ -22,6 +22,24 @@ def ocr():
             {"error": "Did you mean to send: {'image_url': 'some_jpeg_url'}"}
         )
 
+@app.route('/v{}/stringify_image'.format(_VERSION), methods=["POST"])
+def stringify_image ():
+    try:
+        image_file = request.files['file']
+        output = process_image(image_file.stream.read())
+
+        print 'hello'
+        # import ipdb; ipdb.set_trace();
+        return jsonify(
+            {"output": output}
+        )
+    except Exception as err:
+        import ipdb; ipdb.set_trace();
+        return jsonify(
+            {"error": err.message}
+        )
+
+
 @app.route('/v{}/store_to_s3'.format(_VERSION), methods=["POST"])
 def store_to_s3():
     result = store_image(request.files['file'])

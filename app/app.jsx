@@ -1,16 +1,9 @@
 'use strict';
 import React from 'react';
-import ImageDropzone from './components/ImageDropzone';
-import OCRContainer from './components/OCRContainer';
-
-let LasikContainer = (
-  <div>
-    <ImageDropzone />,
-    <OCRContainer />
-  </div>
-)
+import ReactDOM from 'react-dom'
+import LasikContainer from './components/LasikContainer';
 
 ReactDOM.render(
-  LasikContainer,
+  <LasikContainer />,
   document.getElementById('main')
 );

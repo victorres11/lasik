@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import ImageDropzone from './ImageDropzone';
 import OCRContainer from './OCRContainer';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Alert } from 'react-bootstrap';
 
 const API_VERSION  = '/v1',
       STORE_IMAGE_ROUTE = '/store_to_s3',
@@ -32,6 +32,13 @@ var LasikContainer = React.createClass({
     },
 
   render: function() {
+    let alertInstance = (
+            <Alert
+              bsStyle="success">
+              File has been uploaded successfully!
+            </Alert>
+          );
+
     let imgDropzone = (<ImageDropzone
       onDrop={this.onDrop}
       uploadedFile={this.state.file}
@@ -46,6 +53,11 @@ var LasikContainer = React.createClass({
 
     return (
       // <div>
+      <div>
+        <span>
+          {this.state.file ? alertInstance : null}
+        </span>
+
       <Grid
         fluid={true}>
         <Row className="show-grid">
@@ -53,6 +65,7 @@ var LasikContainer = React.createClass({
           <Col md={6} mdPull={6}>{imgDropzone}</Col>
         </Row>
       </Grid>
+      </div>
     )
   }
 

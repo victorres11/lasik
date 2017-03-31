@@ -1,7 +1,7 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
-import { Alert } from 'react-bootstrap';
+
 
 var ImageDropzone = React.createClass({
 
@@ -24,17 +24,12 @@ var ImageDropzone = React.createClass({
   },
 
     render: function () {
-      let alertInstance = (
-              <Alert
-                bsStyle="success">
-                File has been uploaded successfully!
-              </Alert>
-            );
+
 
       return (
 
           <div>
-            {this.props.uploadedFile ? alertInstance : null}
+
             <Dropzone
               className='dropzone'
               onDrop={this.handleImageUpload}

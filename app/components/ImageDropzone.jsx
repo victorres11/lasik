@@ -40,12 +40,9 @@ var ImageDropzone = React.createClass({
               onDrop={this.handleImageUpload}
               multiple={false}
               >
-              {this.props.uploadedFile ? <i className="fa fa-check-circle fa-5x dropzone-contents" aria-hidden="true"> </i> : <p className="dropzone-contents"> Try dropping some files here, or click to select files to upload. </p>}
+              {this.props.uploadedFile ? <i className="fa fa-check-circle fa-5x" aria-hidden="true"> </i> : <p className="dropzone-contents"> Try dropping some files here, or click to select files to upload. </p>}
               {/* <div>{this.state.file ? <img id='img-preview' src={imgPreviewUrl} /> : false}</div> */}
             </Dropzone>
-
-
-
           </div>
       );
     }

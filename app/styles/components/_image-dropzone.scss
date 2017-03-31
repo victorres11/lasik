@@ -12,17 +12,19 @@ div.dropzone {
   margin: auto;
 }
 
-.OCR-processing-button {
-  margin: 20px;
+
+.fa-check-circle {
+color: green;
 }
 
-.fa-check-circle{
-  color: green;
+.fa-5x {
+  margin-left: 40%;
+  padding-top: 20%;
 }
 
 .dropzone-contents {
   // TODO: Improve the padding-top this to make it more reactive!
-  padding-top: 50px;
+  padding-top: 20%;
   margin: 10px;
   text-align: center;
 }

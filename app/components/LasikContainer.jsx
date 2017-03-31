@@ -31,7 +31,6 @@ var LasikContainer = React.createClass({
       console.log('Rejected file: ', rejectedFile);
     },
 
-
   render: function() {
     let imgDropzone = (<ImageDropzone
       onDrop={this.onDrop}
@@ -45,7 +44,6 @@ var LasikContainer = React.createClass({
         processImageRoute={PROCESS_IMAGE_ROUTE}
       />);
 
-
     return (
       // <div>
       <Grid
@@ -55,10 +53,6 @@ var LasikContainer = React.createClass({
           <Col md={6} mdPull={6}>{imgDropzone}</Col>
         </Row>
       </Grid>
-
-
-
-      // </div>
     )
   }
 

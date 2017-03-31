@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import ImageDropzone from './ImageDropzone';
 import OCRContainer from './OCRContainer';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 const API_VERSION  = '/v1',
       STORE_IMAGE_ROUTE = '/store_to_s3',
@@ -32,21 +33,32 @@ var LasikContainer = React.createClass({
 
 
   render: function() {
-    return (
-      <div>
-        <ImageDropzone
-          onDrop={this.onDrop}
-          uploadedFile={this.state.file}
-          apiVersion={API_VERSION}
-          storeImageRoute={STORE_IMAGE_ROUTE}
-        />
-        <OCRContainer
-          uploadedFile={this.state.file}
-          apiVersion={API_VERSION}
-          processImageRoute={PROCESS_IMAGE_ROUTE}
-        />
+    let imgDropzone = (<ImageDropzone
+      onDrop={this.onDrop}
+      uploadedFile={this.state.file}
+      apiVersion={API_VERSION}
+      storeImageRoute={STORE_IMAGE_ROUTE}/>);
 
-      </div>
+    let ocrContainer =(  <OCRContainer
+        uploadedFile={this.state.file}
+        apiVersion={API_VERSION}
+        processImageRoute={PROCESS_IMAGE_ROUTE}
+      />);
+
+
+    return (
+      // <div>
+      <Grid
+        fluid={true}>
+        <Row className="show-grid">
+          <Col md={6} mdPush={6}>{ocrContainer}</Col>
+          <Col md={6} mdPull={6}>{imgDropzone}</Col>
+        </Row>
+      </Grid>
+
+
+
+      // </div>
     )
   }
 

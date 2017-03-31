@@ -34,7 +34,7 @@ def stringify_image ():
             {"output": output}
         )
     except Exception as err:
-        import ipdb; ipdb.set_trace();
+        print err.message
         return jsonify(
             {"error": err.message}
         )

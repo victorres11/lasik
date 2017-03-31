@@ -39,16 +39,18 @@ var OCRContainer = React.createClass({
 
     render: function () {
       return (
-          <div>
-            <Button
-              bsStyle="primary"
-              className='OCR-processing-button'
-              onClick={this.onButtonClick}
-              >OCR Processing
-            </Button><br></br>
+        <div>
+          {/* <Button
+             bsStyle="primary"
+             className='OCR-processing-button'
+             onClick={this.onButtonClick}
+             >OCR Processing
+           </Button><br></br> */}
 
-            {this.props.uploadedFile ? this.state.imgString : "no file detected"}
+          <div className="ocr-zone">
+            <p className="ocr-contents">{this.props.uploadedFile ? this.state.imgString : "no file detected"}</p>
           </div>
+        </div>
       );
     }
 });

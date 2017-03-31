@@ -9,6 +9,7 @@ div.dropzone {
   width: 300px;
   height: 200px;
   border-style: dashed;
+  margin: auto;
 }
 
 .OCR-processing-button {
@@ -23,4 +24,5 @@ div.dropzone {
   // TODO: Improve the padding-top this to make it more reactive!
   padding-top: 50px;
   margin: 10px;
+  text-align: center;
 }

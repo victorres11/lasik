@@ -2,10 +2,10 @@
 <html>
   <head lang="en">
     <meta charset="UTF-8">
-    <title>Flask React</title>
+    <title>Project Lasik</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- styles -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
     <script src="https://use.fontawesome.com/d9f15f8f3c.js"></script>
@@ -14,9 +14,10 @@
   </head>
   <body>
     <div class="container">
-      <h1>OCR Project Lasik</h1>
+      <h1 align='center'>Project Lasik</h1>
       <br>
-      <div id="main"></div>
+      <div id="main">
+      </div>
     </div>
     <!-- scripts -->
     <script src="{{ url_for('static', filename='app.js') }}"></script>

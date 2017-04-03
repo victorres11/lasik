@@ -1,9 +1,8 @@
 'use strict';
 import React from 'react';
-import ReactDOM from 'react-dom'
 import ImageDropzone from './ImageDropzone';
 import OCRContainer from './OCRContainer';
-import { Grid, Row, Col, Alert } from 'react-bootstrap';
+import { Grid, Row, Col, Alert, Jumbotron, Navbar } from 'react-bootstrap';
 
 const API_VERSION  = '/v1',
       STORE_IMAGE_ROUTE = '/store_to_s3',
@@ -52,8 +51,18 @@ var LasikContainer = React.createClass({
       />);
 
     return (
-      // <div>
       <div>
+          <Navbar>
+              <Navbar.Header>
+                  <Navbar.Brand>
+                      Project Lasik 🐈👊
+                  </Navbar.Brand>
+              </Navbar.Header>
+          </Navbar>
+        <Jumbotron>
+            <h1>Project Lasik </h1>
+            <p>Upload a file to use the OCR to text converter.</p>
+        </Jumbotron>
         <span>
           {this.state.file ? alertInstance : null}
         </span>

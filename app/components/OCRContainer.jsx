@@ -1,12 +1,10 @@
 import React from 'react';
 import request from 'superagent';
 
-import { Button } from 'react-bootstrap';
-
 var OCRContainer = React.createClass({
 
   getInitialState: function () {
-    return { imgString: "" }
+    return { ocrString: "" }
   },
 
   componentWillReceiveProps(nextProps) {
@@ -23,7 +21,7 @@ var OCRContainer = React.createClass({
         } else {
         console.log("API Call worked");
         this.setState({
-          imgString: response.body["output"]
+          ocrString: response.body["output"]
         });
         }
       })
@@ -31,10 +29,22 @@ var OCRContainer = React.createClass({
     }
   },
 
+    handleChange(event) {
+        this.setState({
+            ocrString: event.target.value
+        });
+    },
+
     render: function () {
+        let textArea = (
+            <textarea rows="10" cols="50" value={ this.props.uploadedFile ? this.state.ocrString : "OCR String will be outputted here" }
+             onChange={this.handleChange}
+            />
+        );
+
       return (
         <div className="ocr-zone">
-          <p className="ocr-contents">{this.props.uploadedFile ? this.state.imgString : "no file detected"}</p>
+          { textArea }
         </div>
       );
     }

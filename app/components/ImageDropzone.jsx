@@ -3,14 +3,14 @@ import Dropzone from 'react-dropzone';
 import request from 'superagent';
 
 
-var ImageDropzone = React.createClass({
+const ImageDropzone = React.createClass({
 
   handleImageUpload: function(file) {
     /** POST the uploaded file using backend API which will end up storing
     the file on S3.
     **/
     let upload = request.post(this.props.apiVersion + this.props.storeImageRoute)
-                        .field('file', file)
+                        .field('file', file);
 
     upload.end((err, response) => {
       if (err) {
@@ -18,13 +18,12 @@ var ImageDropzone = React.createClass({
       } else {
       console.log("Uploaded successfully to s3");
       }
-    })
+    });
 
     this.props.onDrop(file);
   },
 
     render: function () {
-
 
       return (
 

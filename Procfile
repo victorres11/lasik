@@ -1,1 +1,1 @@
-web: npm install && node node_modules/gulp/bin/gulp build && python server/app.py
+web: npm install && gulp build && python server/app.py

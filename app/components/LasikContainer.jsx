@@ -23,11 +23,9 @@ var LasikContainer = React.createClass({
 
     TODO: file validation
     **/
-      console.log('Accepted file: ', acceptedFile);
       this.setState({
         file: acceptedFile[0]
-      })
-      console.log('Rejected file: ', rejectedFile);
+      });
     },
 
   render: function() {

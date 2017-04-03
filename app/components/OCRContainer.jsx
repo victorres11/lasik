@@ -8,10 +8,11 @@ var OCRContainer = React.createClass({
   },
 
   componentWillReceiveProps(nextProps) {
+      /***
+       * We'll process the file here when a file as uploaded and get the OCR string result.`
+       ***/
     if (nextProps.uploadedFile) {
-      console.log("process image here so that we can get the OCR representation");
       // process file -> OCR
-      console.log("Should be a file here...");
       let upload = request.post(this.props.apiVersion + this.props.processImageRoute)
                           .field('file', nextProps.uploadedFile);
 
@@ -19,7 +20,6 @@ var OCRContainer = React.createClass({
         if (err) {
           console.error(err);
         } else {
-        console.log("API Call worked");
         this.setState({
           ocrString: response.body["output"]
         });

@@ -1,7 +1,10 @@
 {
-  "name": "hello-world-vic",
+  "name": "Project Lasik",
   "version": "1.0.0",
-  "description": "Be sure to check out the blog posts-",
+  "description": "Catphister",
+  "engines": {
+      "node": "6.10.0"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

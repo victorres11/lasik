@@ -1,1 +1,1 @@
-web: gulp build && python server/app.py
+web: python server/app.py

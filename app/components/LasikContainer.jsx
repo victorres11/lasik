@@ -34,36 +34,52 @@ var LasikContainer = React.createClass({
               bsStyle="success">
               File has been uploaded successfully!
             </Alert>
-          );
+          ),
 
-    let imgDropzone = (<ImageDropzone
-      onDrop={this.onDrop}
-      uploadedFile={this.state.file}
-      apiVersion={API_VERSION}
-      storeImageRoute={STORE_IMAGE_ROUTE}/>);
+        imgDropzone = (
+            <ImageDropzone
+              onDrop={this.onDrop}
+              uploadedFile={this.state.file}
+              apiVersion={API_VERSION}
+              storeImageRoute={STORE_IMAGE_ROUTE}
+            />
+        ),
 
-    let ocrContainer =(  <OCRContainer
-        uploadedFile={this.state.file}
-        apiVersion={API_VERSION}
-        processImageRoute={PROCESS_IMAGE_ROUTE}
-      />);
+        ocrContainer = (
+            <OCRContainer
+                uploadedFile={this.state.file}
+                apiVersion={API_VERSION}
+                processImageRoute={PROCESS_IMAGE_ROUTE}
+            />
+        ),
+
+        navbar = (
+        <Navbar>
+            <Navbar.Header>
+                <Navbar.Brand>
+                    Project Lasik 🐈👊
+                </Navbar.Brand>
+            </Navbar.Header>
+        </Navbar>
+    ),
+
+        jumbotron = (
+          <Jumbotron>
+              <h1>Project Lasik </h1>
+              <p>Upload a file to use the OCR to text converter.</p>
+          </Jumbotron>
+    ),
+        uploadAlert = (
+            <span>
+              {this.state.file ? alertInstance : null}
+            </span>
+    );
 
     return (
       <div>
-          <Navbar>
-              <Navbar.Header>
-                  <Navbar.Brand>
-                      Project Lasik 🐈👊
-                  </Navbar.Brand>
-              </Navbar.Header>
-          </Navbar>
-        <Jumbotron>
-            <h1>Project Lasik </h1>
-            <p>Upload a file to use the OCR to text converter.</p>
-        </Jumbotron>
-        <span>
-          {this.state.file ? alertInstance : null}
-        </span>
+          { navbar }
+          { jumbotron }
+          { uploadAlert }
 
       <Grid
         fluid={true}>

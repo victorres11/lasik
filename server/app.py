@@ -24,20 +24,20 @@ def ocr():
 
 @app.route('/v{}/stringify_image'.format(_VERSION), methods=["POST"])
 def stringify_image ():
-    try:
-        image_file = request.files['file']
-        output = process_image(image_file.stream.read())
+    # try:
+    image_file = request.files['file']
+    output = process_image(image_file.stream.read())
 
-        print 'hello'
-        # import ipdb; ipdb.set_trace();
-        return jsonify(
-            {"output": output}
-        )
-    except Exception as err:
-        print err.message
-        return jsonify(
-            {"error": err.message}
-        )
+    print 'hello'
+    return jsonify(
+        {"output": output}
+    )
+    # except Exception as err:
+    #     raise Exception
+        # print err.message
+        # return jsonify(
+        #     {"error": err.message}
+        # )
 
 
 @app.route('/v{}/store_to_s3'.format(_VERSION), methods=["POST"])

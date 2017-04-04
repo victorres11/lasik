@@ -12,9 +12,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/realpython/ultimate-flask-front-end.git"
+    "url": "git+https://github.com/victorres11/lasik.git"
   },
-  "author": "",
+  "author": "Vic Torres",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/realpython/ultimate-flask-front-end/issues"

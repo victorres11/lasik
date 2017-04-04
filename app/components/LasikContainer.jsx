@@ -68,8 +68,8 @@ var LasikContainer = React.createClass({
       <Grid
         fluid={true}>
         <Row className="show-grid">
-          <Col md={6} mdPush={6}>{ocrContainer}</Col>
-          <Col md={6} mdPull={6}>{imgDropzone}</Col>
+          <Col md={4} lg={4} mdOffset={2} lgOffset={2}>{imgDropzone}</Col>
+          <Col md={4} lg={4} mdOffset={0} lgOffset={0}>{ocrContainer}</Col>
         </Row>
       </Grid>
       </div>

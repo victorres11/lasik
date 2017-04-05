@@ -9,10 +9,10 @@ var OCRContainer = React.createClass({
 
   componentWillReceiveProps(nextProps) {
       /***
-       * We'll process the file here when a file as uploaded and get the OCR string result.`
+       * This will take the uploadedFile and make an API call to the back end to do the OCR processing and
+       * stores the resulting ocrString locally to display in the textArea.
        ***/
     if (nextProps.uploadedFile) {
-      // process file -> OCR
       let upload = request.post(this.props.apiVersion + this.props.processImageRoute)
                           .field('file', nextProps.uploadedFile);
 
@@ -37,8 +37,9 @@ var OCRContainer = React.createClass({
 
     render: function () {
         let textArea = (
-            <textarea rows="10" cols="50" value={ this.props.uploadedFile ? this.state.ocrString : "OCR String will be outputted here" }
-             onChange={this.handleChange}
+            <textarea rows="10" cols="50"
+                      value={ this.props.uploadedFile ? this.state.ocrString : "OCR String will be outputted here" }
+                      onChange={this.handleChange}
             />
         );
 

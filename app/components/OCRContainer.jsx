@@ -4,7 +4,9 @@ import request from 'superagent';
 var OCRContainer = React.createClass({
 
   getInitialState: function () {
-    return { ocrString: "" }
+    return {
+        ocrString: "",
+    }
   },
 
   componentWillReceiveProps(nextProps) {
@@ -12,7 +14,7 @@ var OCRContainer = React.createClass({
        * This will take the uploadedFile and make an API call to the back end to do the OCR processing and
        * stores the resulting ocrString locally to display in the textArea.
        ***/
-    if (nextProps.uploadedFile) {
+    if (nextProps.uploadedFile !== this.props.uploadedFile) {
       let upload = request.post(this.props.apiVersion + this.props.processImageRoute)
                           .field('file', nextProps.uploadedFile);
 
@@ -20,9 +22,10 @@ var OCRContainer = React.createClass({
         if (err) {
           console.error(err);
         } else {
-        this.setState({
-          ocrString: response.body["output"]
-        });
+            response.body["output"] === "null" ? this.props.handleAlertType("failure") : this.props.handleAlertType("success");
+            this.setState({
+                ocrString: response.body["output"]
+            });
         }
       })
 

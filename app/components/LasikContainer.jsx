@@ -11,7 +11,10 @@ const API_VERSION  = '/v1',
 var LasikContainer = React.createClass({
 
   getInitialState: function() {
-    return {file: ''}
+    return {
+        file: '',
+        alertType: null
+    }
   },
 
   onDrop: function (acceptedFile, rejectedFile) {
@@ -28,52 +31,78 @@ var LasikContainer = React.createClass({
       });
     },
 
+  handleAlertType: function (value) {
+    console.log("shouldAlert triggered!");
+    console.log(value);
+
+    this.setState({
+        alertType: value
+      })
+  },
+
   render: function() {
-    let alertInstance = (
+      // let alertStyle = this.state.alertType === "success" ? "success" : "danger",
+      //     alertText  =  this.state.alertType === "success" ? "File has been uploaded successfully!" : "danger";
+      let alertStyle = "",
+          alertText  = "";
+
+      switch (this.state.alertType) {
+          case "success":
+              alertStyle = "success";
+              alertText  = "File has been uploaded successfully!";
+              break;
+          case "failure":
+              alertStyle = "danger";
+              alertText  = "We were unable to perform OCR on the uploaded file. Please try another.";
+              break;
+      }
+
+      let alertInstance = (
             <Alert
-              bsStyle="success">
-              File has been uploaded successfully!
+              bsStyle={alertStyle}>
+                {alertText}
             </Alert>
           ),
 
-        imgDropzone = (
+          imgDropzone = (
             <ImageDropzone
               onDrop={this.onDrop}
               uploadedFile={this.state.file}
               apiVersion={API_VERSION}
               storeImageRoute={STORE_IMAGE_ROUTE}
             />
-        ),
+          ),
 
-        ocrContainer = (
+          ocrContainer = (
             <OCRContainer
                 uploadedFile={this.state.file}
                 apiVersion={API_VERSION}
                 processImageRoute={PROCESS_IMAGE_ROUTE}
+                handleAlertType={ this.handleAlertType }
             />
-        ),
+          ),
 
-        navbar = (
-        <Navbar>
+          navbar = (
+          <Navbar>
             <Navbar.Header>
                 <Navbar.Brand>
                     Project Lasik 🐈👊
                 </Navbar.Brand>
             </Navbar.Header>
-        </Navbar>
-    ),
+          </Navbar>
+      ),
 
-        jumbotron = (
-          <Jumbotron>
+          jumbotron = (
+            <Jumbotron>
               <h1>Project Lasik </h1>
               <p>Upload a file to use the OCR to text converter.</p>
-          </Jumbotron>
-    ),
-        uploadAlert = (
+            </Jumbotron>
+      ),
+          uploadAlert = (
             <span>
               {this.state.file ? alertInstance : null}
             </span>
-    );
+      );
 
     return (
       <div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import request from 'superagent';
 
-var OCRContainer = React.createClass({
+let OCRContainer = React.createClass({
 
   getInitialState: function () {
     return {

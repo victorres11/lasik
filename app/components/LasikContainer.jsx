@@ -8,7 +8,7 @@ const API_VERSION  = '/v1',
       STORE_IMAGE_ROUTE = '/store_to_s3',
       PROCESS_IMAGE_ROUTE = '/stringify_image';
 
-var LasikContainer = React.createClass({
+let LasikContainer = React.createClass({
 
   getInitialState: function() {
     return {
@@ -32,17 +32,12 @@ var LasikContainer = React.createClass({
     },
 
   handleAlertType: function (value) {
-    console.log("shouldAlert triggered!");
-    console.log(value);
-
     this.setState({
         alertType: value
       })
   },
 
   render: function() {
-      // let alertStyle = this.state.alertType === "success" ? "success" : "danger",
-      //     alertText  =  this.state.alertType === "success" ? "File has been uploaded successfully!" : "danger";
       let alertStyle = "",
           alertText  = "";
 
@@ -94,8 +89,8 @@ var LasikContainer = React.createClass({
 
           jumbotron = (
             <Jumbotron>
-              <h1>Project Lasik </h1>
-              <p>Upload a file to use the OCR to text converter.</p>
+              <h1>Image to Text Converter</h1>
+              <p>Upload a file to use the image to text converter. That's it.</p>
             </Jumbotron>
       ),
           uploadAlert = (

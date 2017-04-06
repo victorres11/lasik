@@ -7,7 +7,7 @@ docker_push_image_to_heroku:
 	docker push registry.heroku.com/mysterious-harbor-13096/web
 
 docker_deploy:
-	git push heroku master
+	docker build -t lasik-docker .
 	docker tag lasik-docker registry.heroku.com/mysterious-harbor-13096/web 
 	docker push registry.heroku.com/mysterious-harbor-13096/web
 

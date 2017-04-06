@@ -1,12 +1,15 @@
 import os
 import logging
-from logging import FileHandler, Formatter
+import logging.config
 from flask import Flask, request, jsonify, render_template
 
 from ocr import process_image, store_image
 
 app = Flask(__name__, static_folder="../dist", template_folder="../app/templates")
 _VERSION = 1 # API Version
+
+
+logging.config.fileConfig('config.ini')
 
 @app.route('/v{}/ocr'.format(_VERSION), methods=["POST"])
 def ocr():
@@ -24,20 +27,22 @@ def ocr():
 
 @app.route('/v{}/stringify_image'.format(_VERSION), methods=["POST"])
 def stringify_image ():
-    # try:
-    image_file = request.files['file']
-    output = process_image(image_file.stream.read())
+    try:
+        image_file = request.files['file']
+        output = process_image(image_file.stream.read())
 
-    print 'hello'
-    return jsonify(
-        {"output": output}
-    )
-    # except Exception as err:
-    #     raise Exception
-        # print err.message
-        # return jsonify(
-        #     {"error": err.message}
-        # )
+        if not output:
+            output = "null"
+            logging.warning("No string returned from the OCR process... returning null.")
+
+        return jsonify(
+            {"output": output}
+        )
+    except Exception as err:
+        logging.error(err.message)
+        return jsonify(
+            {"error": err.message}
+        )
 
 
 @app.route('/v{}/store_to_s3'.format(_VERSION), methods=["POST"])
